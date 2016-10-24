@@ -21,6 +21,9 @@ $tempDirName = "Temp"
 $tempDir = Join-Path $workDir $tempDirName
 $scriptsDir = Join-Path $workDir $scriptsDirName
 $zip = Join-Path $tempDir "master.zip"
+if (Test-Path $zip) {
+     Remove-Item $zip
+}
 DownloadFile $source $zip
 $now = [System.DateTime]::Now.ToString().Replace(":", "").Replace("/","")
 $tempunpackdir = Join-Path $tempDir $now
